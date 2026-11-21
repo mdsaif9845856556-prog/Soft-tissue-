@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+  <title>Soft Tissue | Online Store</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #172033;
+    }
+
+    header {
+      background: #2563eb;
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .product-image {
+      background: #eaf1ff;
+      border-radius: 14px;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 75px;
+      margin-bottom: 16px;
+    }
+
+    .product h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #2563eb;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .muted {
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .primary {
+      background: #2563eb;
+      color: white;
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .secondary {
+      background: #e2e8f0;
+      color: #172033;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .quantity button {
+      padding: 9px 17px;
+      font-size: 20px;
+    }
+
+    #quantity {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .delivery-option {
+      display: block;
+      padding: 13px;
+      border: 1px solid #dbe3ee;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    .delivery-option input {
+      margin-right: 8px;
+    }
+
+    .cart-total {
+      font-size: 19px;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .field {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea.field {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🧻 Soft Tissue</h1>
+  <p>Your trusted tissue shopping store</p>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h2>Welcome to Soft Tissue!</h2>
+    <p class="muted">
+      Shop tissue paper bundles easily from your mobile.
+      Choose your products and delivery method.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Our Products</h2>
+
+    <div class="product">
+      <div class="product-image">🧻</div>
+
+      <h3>Tissue Paper Bundle</h3>
+
+      <p class="muted">
+        Quality tissue paper bundles for your daily needs.
+      </p>
+
+      <div class="price">Price to be confirmed</div>
+
+      <div class="quantity">
+        <button class="secondary" onclick="changeQuantity(-1)">−</button>
+        <span id="quantity">1</span>
+        <button class="secondary" onclick="changeQuantity(1)">+</button>
+      </div>
+
+      <button class="primary" onclick="addToCart()">
+        Add to Cart
+      </button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🛒 My Cart</h2>
+    <p id="cartMessage">Your cart is empty.</p>
+    <p class="cart-total" id="cartTotal">Quantity: 0</p>
+  </section>
+
+  <section class="card">
+    <h2>🚚 Delivery Options</h2>
+
+    <label class="delivery-option">
+      <input type="radio" name="delivery"
+        value="Home Delivery" checked>
+      Home Delivery
+    </label>
+
+    <label class="delivery-option">
+      <input type="radio" name="delivery"
+        value="Store Pickup">
+      Store Pickup
+    </label>
+  </section>
+
+  <section class="card">
+    <h2>Place Your Order</h2>
+
+    <input id="customerName" class="field"
+      type="text" placeholder="Customer Name"
+      autocomplete="name">
+
+    <input id="mobile" class="field"
+      type="tel" placeholder="10-digit Mobile Number"
+      maxlength="10" inputmode="numeric"
+      autocomplete="tel">
+
+    <textarea id="address" class="field"
+      placeholder="Delivery Address"></textarea>
+
+    <button class="primary" id="orderButton"
+      onclick="checkout()">
+      Submit Order
+    </button>
+
+    <p class="muted" id="orderMessage"
+      style="margin-top:12px;"></p>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Soft Tissue. All rights reserved.
+</footer>
+
+<script>
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbxsFnLHcHsVtCEgLXQX0wIXukASdQPIV82P8RIW2XTi8VTiEWxlqMKXQl1KDY0ySlY2/exec";
+
+  let quantity = 1;
+  let cart = 0;
+
+  function changeQuantity(value) {
+    quantity = Math.max(1, quantity + value);
+    document.getElementById("quantity").textContent = quantity;
+  }
+
+  function addToCart() {
+    cart += quantity;
+
+    document.getElementById("cartMessage").textContent =
+      "Tissue Paper Bundle added successfully!";
+
+    document.getElementById("cartTotal").textContent =
+      "Total quantity: " + cart;
+  }
+
+  async function checkout() {
+    if (cart === 0) {
+      alert("Please add a tissue bundle to your cart first.");
+      return;
+    }
+
+    const customerName =
+      document.getElementById("customerName").value.trim();
+
+    const mobile =
+      document.getElementById("mobile").value.trim();
+
+    const address =
+      document.getElementById("address").value.trim();
+
+    const delivery = document.querySelector(
+      'input[name="delivery"]:checked'
+    ).value;
+
+    if (!customerName || !mobile) {
+      alert("Please enter your name and mobile number.");
+      return;
+    }
+
+    if (!/^[0-9]{10}$/.test(mobile)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
+    if (delivery === "Home Delivery" && !address) {
+      alert("Please enter your delivery address.");
+      return;
+    }
+
+    const orderData = {
+      customerName: customerName,
+      mobile: mobile,
+      product: "Tissue Paper Bundle",
+      quantity: cart,
+      delivery: delivery,
+      address: address
+    };
+
+    const button = document.getElementById("orderButton");
+    const message = document.getElementById("orderMessage");
+
+    button.disabled = true;
+    button.textContent = "Sending Order...";
+    message.textContent = "Sending your order request...";
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(orderData)
+      });
+
+      message.textContent =
+        "Order request sent. Please verify it appears in Google Sheets before treating it as confirmed.";
+
+      alert(
+        "Your order request has been sent! " +
+        "Please wait while the store checks your order."
+      );
+
+      cart = 0;
+      quantity = 1;
+
+      document.getElementById("quantity").textContent = 1;
+      document.getElementById("cartMessage").textContent =
+        "Your cart is empty.";
+      document.getElementById("cartTotal").textContent =
+        "Quantity: 0";
+
+      document.getElementById("customerName").value = "";
+      document.getElementById("mobile").value = "";
+      document.getElementById("address").value = "";
+
+    } catch (error) {
+      message.textContent =
+        "Unable to send the order. Please try again.";
+
+      alert("Order could not be sent. Please try again.");
+    } finally {
+      button.disabled = false;
+      button.textContent = "Submit Order";
+    }
+  }
+</script>
+
+</body>
+</html>
