@@ -2,132 +2,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#2563eb">
-<title>My First App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+  <title>Soft Tissue | Online Store</title>
 
-<style>
-* { box-sizing: border-box; }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f1f5f9;
-  color: #172033;
-}
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #172033;
+    }
 
-header {
-  background: #2563eb;
-  color: white;
-  padding: 28px 20px;
-  border-radius: 0 0 25px 25px;
-}
+    header {
+      background: #2563eb;
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+    }
 
-header h1 { margin: 10px 0; }
+    header h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
 
-main { padding: 20px; }
+    header p {
+      font-size: 15px;
+    }
 
-.card {
-  background: white;
-  padding: 22px;
-  margin: 16px 0;
-  border-radius: 18px;
-  box-shadow: 0 3px 12px #00000010;
-}
+    .container {
+      max-width: 650px;
+      margin: auto;
+      padding: 18px;
+    }
 
-button {
-  background: #2563eb;
-  color: white;
-  border: 0;
-  padding: 15px;
-  width: 100%;
-  border-radius: 12px;
-  font-size: 17px;
-  margin-top: 10px;
-}
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
 
-button:active { opacity: .8; }
+    h2 {
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
 
-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: white;
-  display: flex;
-  justify-content: space-around;
-  padding: 16px 5px;
-  box-shadow: 0 -2px 10px #00000010;
-}
+    .product-image {
+      background: #eaf1ff;
+      border-radius: 14px;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 75px;
+      margin-bottom: 16px;
+    }
 
-nav button {
-  background: transparent;
-  color: #2563eb;
-  width: auto;
-  margin: 0;
-  padding: 8px;
-  font-size: 14px;
-}
+    .product h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
 
-#message { color: #2563eb; }
-</style>
+    .price {
+      color: #2563eb;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .muted {
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #2563eb;
+      color: white;
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .secondary {
+      background: #e2e8f0;
+      color: #172033;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .quantity button {
+      padding: 9px 17px;
+      font-size: 20px;
+    }
+
+    #quantity {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .delivery-option {
+      display: block;
+      padding: 13px;
+      border: 1px solid #dbe3ee;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    .delivery-option input {
+      margin-right: 8px;
+    }
+
+    .cart-total {
+      font-size: 19px;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <h1>My First App 🚀</h1>
-  <p>Welcome! Your own mobile app starts here.</p>
+  <h1>🧻 Soft Tissue</h1>
+  <p>Your trusted tissue shopping store</p>
 </header>
 
-<main>
+<main class="container">
+
   <section class="card">
-    <h2>Home 🏠</h2>
-    <p>Welcome to my application.</p>
-    <button onclick="showMessage()">
-      Get Started
+    <h2>Welcome to Soft Tissue!</h2>
+    <p class="muted">
+      Shop tissue paper bundles easily from your mobile.
+      Choose your products and delivery method.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Our Products</h2>
+
+    <div class="product">
+      <div class="product-image">🧻</div>
+
+      <h3>Tissue Paper Bundle</h3>
+
+      <p class="muted">
+        Quality tissue paper bundles for your daily needs.
+      </p>
+
+      <div class="price">Price to be confirmed</div>
+
+      <div class="quantity">
+        <button class="secondary" onclick="changeQuantity(-1)">−</button>
+        <span id="quantity">1</span>
+        <button class="secondary" onclick="changeQuantity(1)">+</button>
+      </div>
+
+      <button class="primary" onclick="addToCart()">
+        Add to Cart
+      </button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🛒 My Cart</h2>
+    <p id="cartMessage">Your cart is empty.</p>
+    <p class="cart-total" id="cartTotal">Quantity: 0</p>
+  </section>
+
+  <section class="card">
+    <h2>🚚 Delivery Options</h2>
+
+    <label class="delivery-option">
+      <input type="radio" name="delivery" value="Home Delivery" checked>
+      Home Delivery
+    </label>
+
+    <label class="delivery-option">
+      <input type="radio" name="delivery" value="Store Pickup">
+      Store Pickup
+    </label>
+  </section>
+
+  <section class="card">
+    <h2>Place Your Order</h2>
+    <p class="muted">
+      Online ordering and payment will be activated
+      in the next development step.
+    </p>
+
+    <button class="primary" onclick="checkout()">
+      Continue to Order
     </button>
   </section>
 
-  <section class="card">
-    <h2>My Features</h2>
-    <p>📱 Mobile friendly design</p>
-    <p>🌐 Android and iPhone support</p>
-    <p>⚡ Fast and simple</p>
-  </section>
-
-  <section class="card">
-    <h2>My App</h2>
-    <p id="message">Your app is ready to customize!</p>
-  </section>
 </main>
 
-<nav>
-  <button onclick="home()">🏠 Home</button>
-  <button onclick="about()">ℹ️ About</button>
-  <button onclick="contact()">📞 Contact</button>
-</nav>
+<footer>
+  © 2026 Soft Tissue. All rights reserved.
+</footer>
 
 <script>
-function showMessage() {
-  document.getElementById("message").innerText =
-    "Welcome! Your app is working successfully!";
-}
+  let quantity = 1;
+  let cart = 0;
 
-function home() {
-  window.scrollTo(0, 0);
-}
+  function changeQuantity(value) {
+    quantity = Math.max(1, quantity + value);
+    document.getElementById("quantity").textContent = quantity;
+  }
 
-function about() {
-  alert("Welcome to my own mobile application!");
-}
+  function addToCart() {
+    cart += quantity;
 
-function contact() {
-  alert("Contact details will be added here.");
-}
+    document.getElementById("cartMessage").textContent =
+      "Tissue Paper Bundle added successfully!";
+
+    document.getElementById("cartTotal").textContent =
+      "Total quantity: " + cart;
+  }
+
+  function checkout() {
+    if (cart === 0) {
+      alert("Please add a tissue bundle to your cart first.");
+      return;
+    }
+
+    const delivery = document.querySelector(
+      'input[name="delivery"]:checked'
+    ).value;
+
+    alert(
+      "Your cart is ready!\\n" +
+      "Product: Tissue Paper Bundle\\n" +
+      "Quantity: " + cart + "\\n" +
+      "Delivery: " + delivery +
+      "\\n\\nOnline ordering will be connected in the next step."
+    );
+  }
 </script>
 
 </body>
 </html>
-
